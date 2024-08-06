@@ -78,7 +78,4 @@ In **Modeling**:
 
 ## Some Lessons Learned
 * **Use PiML early and often**, particularly in **early** exploratory data analysis. I intended to use PiML extensively in EDA, but only for things that I didn't end up getting to. In fact, it would have produced better results faster for many of the analyses I did complete in this section.
-* **Don't use Colab** (or any web-based notebook.) While it's convenient for quick notebooks, efforts of even this relatively small scale can benefit from:
- * More control over the environment
- * Less connection instability
- * More (and more consistent) compute power
+* **Don't use Colab** (or any web-based notebook.) While it's convenient for quick notebooks, efforts of even this relatively small scale can benefit from more control over the environment, more (and more consistent) compute power, and less connection instability.
