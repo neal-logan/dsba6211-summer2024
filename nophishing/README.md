@@ -9,8 +9,7 @@ This project covers the development of phishing URL detection models.  Given a s
 
 [01 Exploratory Analysis](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/01_exploratory_analysis.ipynb) - This notebook covers extensive exploratory analysis of the dataset, including some preliminary modeling used to identify the most relevant features.  
 
-[02 Modeling Notebook](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/02_modeling.ipynb)
-[Data](https://github.com/neal-logan/dsba6211-summer2024/tree/main/nophishing/data) - This notebook includes core modeling efforts on features selected in the Exploratory Analysis notebook, including the development of the final model.
+[02 Modeling Notebook](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/02_modeling.ipynb) - This notebook includes core modeling efforts on features selected in the Exploratory Analysis notebook, including the development of the final model.
 
 [Training Data](https://raw.githubusercontent.com/neal-logan/dsba6211-summer2024/main/nophishing/data/phishing-url-pirochet-train.csv)
 
