@@ -7,22 +7,20 @@ This project covers the development of phishing URL detection models.  Given a s
 
 ### Table of Contents
 
-[01 Exploratory Data Analysis](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/01_exploratory_analysis.ipynb) - This notebook covers extensive exploratory analysis of the dataset, including some preliminary modeling used to identify the most relevant features.
+[01 Exploratory Analysis](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/01_exploratory_analysis.ipynb) - This notebook covers extensive exploratory analysis of the dataset, including some preliminary modeling used to identify the most relevant features.  
 
 [02 Modeling Notebook](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/02_modeling.ipynb)
-[Data](https://github.com/neal-logan/dsba6211-summer2024/tree/main/nophishing/data) - This notebook includes TODO
+[Data](https://github.com/neal-logan/dsba6211-summer2024/tree/main/nophishing/data) - This notebook includes core modeling efforts on features selected in the Exploratory Analysis notebook, including the development of the final model.
 
-[03 Appendix: Additional Models and Risk Analysis]() - This notebook includes additional modeling approaches not included in the main notebook as well as a more exhaustive look at model risks.   
+[Training Data](https://raw.githubusercontent.com/neal-logan/dsba6211-summer2024/main/nophishing/data/phishing-url-pirochet-train.csv)
 
-[04 Training Data]() - 
+[Test Data](https://raw.githubusercontent.com/neal-logan/dsba6211-summer2024/main/nophishing/data/phishing-url-pirochet-test.csv) 
 
-[05 Test Data]() -
-
-[requirements.txt]() - This document identifies all libraries (including version) necessary to reproduce the project. 
+[requirements.txt](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/requirements.txt) - This document identifies packages (including versions) directly imported or used in the project. However, it does not identify those packages' requirements, which may be numerous.
 
 ### Reproducing Results
 
-The results can be reproduced by simply running the notebook [02 Modeling](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/02_modeling.ipynb).  This notebook will install and import the necessary packages of the correct versions, load and transform the [data](https://github.com/neal-logan/dsba6211-summer2024/tree/main/nophishing/data), run and evaluate the models, and finally explain key features of the models and the data itself.  The random seed is embedded in the notebook and used wherever necessary to obtain consistent results.
+The results can be reproduced by simply running the Colab notebook [02 Modeling](https://github.com/neal-logan/dsba6211-summer2024/blob/main/nophishing/02_modeling.ipynb).  This notebook will install and import the necessary packages of the correct versions, load and transform the [data](https://github.com/neal-logan/dsba6211-summer2024/tree/main/nophishing/data), run and evaluate the models, and finally explain key features of the models and the data itself.  The random seed is embedded in the notebook and used wherever necessary to obtain consistent results.
 
 ## Introduction
 
@@ -34,13 +32,11 @@ Malicious URL detection can be used in several ways.  It can be used to provide 
 
 #### [Phishing URL Detection](https://github.com/pirocheto/phishing-url-detection) by Pirocheto
 
-
 This repository contains a complete project for phishing URL detection using machine learning and MLOps practices. It uses a TF-IDF vectorizer using both character and word n-grams) with a linear SVM model. The code is designed to be lightweight and fast, suitable for embedding in applications, and can work offline, without an internet connection. The repository also includes instructions for reproducing the model and running the pipeline.
 
 This project is relevant both for the subject matter and because of its relation to the dataset I'm using.
 
 #### [PhishShield](https://github.com/praneeth-katuri/PhishShield) by Praneeth Katuri
-
 
 This GitHub repository provides a comprehensive solution for detecting phishing websites using analytical models and custom transformers for preprocessing. It includes feature-based and text-based models, including random forest, LGBM, SVC, logistic regression, and Multinomial Naive Bayes, and takes advantage of grid-search with cross-validation. The repository also offers Flask deployment for real-time URL prediction and caching for performance improvement.
 
@@ -50,29 +46,26 @@ This project is relevant because it explores and compares a variety of technique
 
 This project uses Multinomial Naive Bayes and Logistic Regression to detect malicious URLs. The model's preprocessing involves tokenization and TF-IDF vectorization. The project includes scripts for training and evaluating the model.
 
-This project is relevant mainly in that it provides an additoinal perspective on the topic.
-
+This project is relevant mainly in that it provides an additional perspective on the topic.
 
 ## Dataset
 
-The data was obtained from [HuggingFace](https://huggingface.co/datasets/pirocheto/phishing-url).
+The data was obtained from [HuggingFace](https://huggingface.co/datasets/pirocheto/phishing-url).  Please see data analysis and preparation sections of the Exploratory Analysis and Modeling notebooks for further detail.
 
-The dataset is cleaned and partly preprocessed. In addition to the raw URL and binary phishing label, it contains 87 features, including:
+## Quick Summary
 
-* 56 features extracted from URL syntax and structure,
-* 24 features generated from page content, and
-* 7 features obtained from external services.
+In Exploratory Analysis:
+* Missing/erroneous data was identified in two features, and preprocessing steps were developed to address the issue, and
+* 14 features were selected based on preliminary modeling and feature importance analysis.
 
-## EDA and Feature Selection
+In Modeling: 
+* These 14 selected features and the preprocessing steps developed to address the missing/erroneous were implemented to develop a new series of models, using the training data set above split into a smaller training set and a validation set;
+* A new model was developed with monotonicity constraints applied to five features, based on concerns identified in partial dependency plots;
+* The development models were assessed for accuracy, overfitting, weakspots, and resilience; and
+* A final model was developed and tested for accuracy against the test dataset.
 
+## Conclusions & Future Directions
 
+The final model's ROC-AUC, precision, and recall are all about 0.96, a pretty good model. 
 
-## Final Models and Evaluation
-
-
-
-## Conclusions and Future Directions
-
-
-
-## Additional Discussion
+However, the final model has not been assessed for overfitting, weakspots, or resilience; this should be addressed. Regularization was not applied and no cross-validation was used to optimize parameters; both should be considered.  Additionally, some method for model deployment should be developed.
