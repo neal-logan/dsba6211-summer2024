@@ -54,11 +54,11 @@ The data was obtained from [HuggingFace](https://huggingface.co/datasets/piroche
 
 ## Quick Summary
 
-In Exploratory Analysis:
+In **Exploratory Analysis**:
 * Missing/erroneous data was identified in two features, and preprocessing steps were developed to address the issue, and
 * 14 features were selected based on preliminary modeling and feature importance analysis.
 
-In Modeling: 
+In **Modeling**: 
 * These 14 selected features and the preprocessing steps developed to address the missing/erroneous were implemented to develop a new series of models, using the training data set above split into a smaller training set and a validation set;
 * A new model was developed with monotonicity constraints applied to five features, based on concerns identified in partial dependency plots;
 * The development models were assessed for accuracy, overfitting, weakspots, and resilience; and
@@ -66,6 +66,19 @@ In Modeling:
 
 ## Conclusions & Future Directions
 
-The final model's ROC-AUC, precision, and recall are all about 0.96, a pretty good model. 
+**Probably a pretty good model**: The final model's ROC-AUC, precision, and recall are all about 0.96.
 
-However, the final model has not been assessed for overfitting, weakspots, or resilience; this should be addressed. Regularization was not applied and no cross-validation was used to optimize parameters; both should be considered.  Additionally, some method for model deployment should be developed.
+**However**:
+* The final model has not been assessed for overfitting, weakspots, or resilience
+* PiML's ROC-AUC seemed to disagree substantially on models that should have been identical 
+* Regularization was not applied
+* No cross-validation was used to optimize parameters
+* There's no consideration for exporting models
+* There's probably room for more feature engineering
+
+## Some Lessons Learned
+* **Use PiML early and often**, particularly in **early** exploratory data analysis. I intended to use PiML extensively in EDA, but only for things that I didn't end up getting to. In fact, it would have produced better results faster for many of the analyses I did complete in this section.
+* **Don't use Colab** (or any web-based notebook.) While it's convenient for quick notebooks, efforts of even this relatively small scale can benefit from:
+ * More control over the environment
+ * Less connection instability
+ * More (and more consistent) compute power
